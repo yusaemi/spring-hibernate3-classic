@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <!-- 此xml為整合所有Spring配置文件，方便管理 -->
+    <!-- Database Configuration -->
+    <import resource="data-source.xml"/>
+    <import resource="hibernate-config.xml"/>
+
+    <!-- Beans Declaration -->
+    <import resource="product-bean.xml"/>
+
+</beans>

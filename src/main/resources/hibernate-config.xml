@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <!-- 建立一個Hibernate的factory，將在Spring程式中共享 -->
+    <!-- 參考data-source.xml的bean.dataSource -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+        <!-- 建立database connection pool -->
+        <property name="hibernateProperties">
+            <props>
+                <!-- 指定資料庫種類 -->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <!-- 是否根據需要每次自動創建資料庫，目前用不到 -->
+                <!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+                <!-- LOG顯示Hibernate持久化操作所生成的SQL -->
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+
+        <!-- 指定classpath下具体需要映射的文件名 -->
+        <property name="mappingResources">
+            <list>
+                <value>product.hbm.xml</value>
+            </list>
+        </property>
+
+    </bean>
+
+</beans>

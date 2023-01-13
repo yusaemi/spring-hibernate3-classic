@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <!-- 為service及dao建立配置文件，將productsDao注入productService -->
+    <!-- Product service -->
+    <bean id="productService" class="idv.module.service.ProductService">
+        <property name="productDao" ref="productDao"/>
+    </bean>
+
+    <!-- Hibernate3的sessionFactory注入productDao，使他能利用資料庫連線 -->
+    <!-- Product Data Access Object -->
+    <bean id="productDao" class="idv.module.repository.ProductDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+</beans>
