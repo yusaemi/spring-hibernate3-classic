@@ -4,8 +4,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * * Product. 2020/3/22 1:05 上午
